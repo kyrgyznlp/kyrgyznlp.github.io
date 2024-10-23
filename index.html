@@ -1,12 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KyrgyzNLP: Browsing, Bibliography, and Scientometrics</title>
+  <meta charset="utf-8">
+  <!-- Yandex.Metrika counter -->
+  <!--     todo add -->
+  <!-- /Yandex.Metrika counter -->
+  <!--   <meta name="yandex-verification" content="..." /> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="description" content="Kyrgyz NLP. Challenges, Progress, and Future (a webpage accompanying the talk by Anton Alekseev and Timur Turatali)."/>
+  <title>KyrgyzNLP Scientometrics</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,600"/>
+  <link rel="stylesheet" href="/style.css"/>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
+  <!--   <script>
+  todo: google analytics
+  </script> -->
+  <style>
+    .content ul {
+        list-style: none;
+        padding: 0;
+        margin-top: 20px;
+    }
+    .content li {
+        margin: 10px 0;
+    }
+    .button {
+        display: inline-block;
+        padding: 12px 24px;
+        margin: 10px;
+        font-size: 16px;
+        font-weight: bold;
+        color: white;
+        background-color: #BFD3E6;
+        border: none;
+        border-radius: 5px;
+        text-align: center;
+        text-decoration: none;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    .button:hover {
+        background-color: #005bb5;
+    }
+    .button-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+    img {
+          align-self: center;
+          margin: 0 auto;
+          width: 350px;
+          border: 1px solid lightgray;
+    }
+  </style>
 </head>
 <body>
-    <h1>KyrgyzNLP: Browsing, Bibliography, and Scientometrics</h1>
-    <p>This is a webpage accompanying the talk <strong>KyrgyzNLP: Challenges, Progress, and Future</strong> given on October 18th, 2024 at the AIST-2024 conference.</p>
+  <div class="container">
+    <header class="masthead">
+        <h1 class="masthead-title"><a href="">KyrgyzNLP: Browsing, Bibliography, and Scientometrics</a></h1>
+        <nav class="masthead-nav"></nav>
+    </header>
+    <div class="content list">
+        This is a webpage accompanying the talk <a href="/pdf/kyrgyz-nlp-slides_2024.pdf">KyrgyzNLP: Challenges, Progress, and Future</a> 
+        given on October 18th, 2024 at the <a href="https://aistconf.org/">AIST-2024</a> conference.<br/><br/>
+        
+        <div class="button-container">
+            <a href="/kyrgyz_nlp/bibliography" class="button">KyrgyzNLP Bibliography Browser</a>
+            <a href="/kyrgyz_nlp/coauthorship" class="button">Co-authorship Graph</a>
+        </div>
+        <br/>
+        <a href="/kyrgyz-nlp-slides_2024.pdf"><img src="kyrgyznlp_first_slide.jpg"/></a>
+    </div>    
+  </div>
 </body>
 </html>
