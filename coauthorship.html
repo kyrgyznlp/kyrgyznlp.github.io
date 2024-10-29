@@ -10,6 +10,8 @@
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,600"/>
   <link rel="stylesheet" href="/style.css"/>
   <link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
+  <script>
+  </script>
   <style>
         .node { stroke: #fff; stroke-width: 3px; }
         .link { stroke: #ccc; stroke-opacity: 0.3; }
@@ -26,8 +28,8 @@
             font-size: 14px;
         }
         #graph {
-          width: 100%;
-          height: 600px;
+          width: 760x;
+          height: 400px;
           border: 1px solid gray;
         }
         svg {
@@ -36,7 +38,11 @@
         }
 
         .export-button {
+            //position: absolute;
+            //top: 10px;
+            //left: 10px;
             padding: 10px 15px;
+            //width:150px;
             margin: 10px;
             background-color: #BFD3E6;
             color: black;
@@ -70,9 +76,7 @@
       <div id="graph">
           <svg></svg>
       </div>
-      <!-- Added the "Export to GEXF" button -->
       <button class="export-button" onclick="exportSVG()">Export as SVG</button>
-      <button class="export-button" onclick="exportGEXF()">Export to GEXF</button>
       <button class="export-button" onclick="location.href='/'">Go Back</button>
       <div id="popup" class="popup"></div>
   </div>
@@ -81,9 +85,7 @@
       let authorsIndex, bibliography, authorPositions;
       let nodes = {}, links = {};
       let normalizedPositions = {};
-      // Declare nodeArray and linkArray globally
-      let nodeArray = [], linkArray = [];
-
+  
       // Load JSON files and initialize the graph
       function loadJSON(filename, callback) {
           fetch('static/' + filename)
@@ -91,10 +93,10 @@
               .then(data => callback(data))
               .catch(error => console.error('Error loading JSON:', error));
       }
-
+  
       // Function to normalize positions and initialize nodes
       function fetchAndInitializePositions() {
-          nodeArray = Object.values(nodes);
+          const nodeArray = Object.values(nodes);
           nodeArray.forEach(node => {
               if (normalizedPositions[node.id]) {
                   node.x = normalizedPositions[node.id].x;
@@ -103,7 +105,7 @@
                   node.fy = normalizedPositions[node.id].y;
               }
           });
-
+  
           // Release fixed positions after initialization
           setTimeout(() => {
               nodeArray.forEach(node => {
@@ -112,42 +114,34 @@
               });
           }, 100); // Release nodes after
       }
-
+  
       // Load author positions and normalize them
       loadJSON('author_positions.json', data => {
           authorPositions = data;
-
+  
           // Normalize positions
-          const width = document.getElementById('graph').clientWidth;
-          const height = document.getElementById('graph').clientHeight;
-
-          const xValues = authorPositions.map(p => p.x);
-          const yValues = authorPositions.map(p => p.y);
-
-          const xMin = Math.min(...xValues);
-          const xMax = Math.max(...xValues);
-          const yMin = Math.min(...yValues);
-          const yMax = Math.max(...yValues);
-
+          const width = 760;
+          const height = 400;
+  
           authorPositions.forEach(pos => {
               normalizedPositions[pos.author_id] = {
-                  x: ((pos.x - xMin) / (xMax - xMin)) * width,
-                  y: ((pos.y - yMin) / (yMax - yMin)) * height
+                  x: (pos.x - Math.min(...authorPositions.map(p => p.x))) / (Math.max(...authorPositions.map(p => p.x)) - Math.min(...authorPositions.map(p => p.x))) * width,
+                  y: (pos.y - Math.min(...authorPositions.map(p => p.y))) / (Math.max(...authorPositions.map(p => p.y)) - Math.min(...authorPositions.map(p => p.y))) * height
               };
           });
-
+  
           // Load authors index and bibliography
           loadJSON('authors_index.json', data => {
               authorsIndex = data;
               loadJSON('bibliography_joined.json', visualizeGraph);
           });
       });
-
+  
       // Visualize the graph after all data is loaded
       function visualizeGraph(bibliography) {
           // Construct nodes and links
           for (const [refKey, entry] of Object.entries(bibliography)) {
-              const authorIDs = entry.author.split(' and ').map(s => s.trim());
+              const authorIDs = entry.author.split(' and ');
               authorIDs.forEach(authorID => {
                   if (!nodes[authorID]) {
                       nodes[authorID] = { id: authorID, name_ru: authorsIndex[authorID]?.ru || authorID, name_en: authorsIndex[authorID]?.en || authorID, papers: 0 };
@@ -163,139 +157,136 @@
                   }
               }
           }
-
+  
           // Initialize positions for nodes
           fetchAndInitializePositions();
-
+  
           // Continue with D3 visualization
-          nodeArray = Object.values(nodes);
-          linkArray = Object.values(links);
-
-          const width = document.getElementById('graph').clientWidth;
-          const height = document.getElementById('graph').clientHeight;
-
+          const nodeArray = Object.values(nodes);
+          const linkArray = Object.values(links);
+          const width = window.innerWidth, height = window.innerHeight;
+  
           // Define color scale for nodes based on the number of papers
           const colorScale = d3.scaleLinear()
               .domain([1, d3.max(nodeArray, d => d.papers)])
               .range(["#BFD3E6", "#4A6FA5"]);
-
+  
           const svg = d3.select("svg")
-                        .attr("width", width).attr("height", height)
+                        //.attr("width", width).attr("height", height)
                         .call(d3.zoom().scaleExtent([0.5, 5]).on("zoom", (event) => {
                             svgGroup.attr("transform", event.transform);
-                        }))
-                        .attr("viewBox", [0, 0, width, height]);
-
+                        }));
+  
           const svgGroup = svg.append("g");
-
+  
           const link = svgGroup.append("g").selectAll("line")
                                .data(linkArray).enter().append("line")
                                .attr("class", "link");
-
+  
           const linkLabel = svgGroup.append("g").selectAll("text")
                                      .data(linkArray).enter().append("text")
                                      .attr("class", "link-label")
                                      .attr("dy", ".0em")
                                      .text(d => d.label);
-
-          // Adjust node radius based on the number of papers
-          const maxPapers = d3.max(nodeArray, d => d.papers);
-          const minRadius = 5, maxRadius = 15;
-          const radiusScale = d3.scaleLinear()
-                                .domain([1, maxPapers])
-                                .range([minRadius, maxRadius]);
-
+  
           const node = svgGroup.append("g").selectAll("circle")
                                .data(nodeArray).enter().append("circle")
                                .attr("class", "node")
-                               .attr("r", d => radiusScale(d.papers))
+                               .attr("r", 8)
                                .attr("fill", d => colorScale(d.papers))
                                .on("click", showPopup)
                                .call(d3.drag().on("start", dragstarted)
                                                .on("drag", dragged)
                                                .on("end", dragended));
-
-          // Adjust font size based on node size
+  
           const nodeLabel = svgGroup.append("g").selectAll("text")
                                     .data(nodeArray).enter().append("text")
                                     .attr("class", "node-label")
-                                    .attr("dy", "-0.75em")
-                                    .attr("text-anchor", "middle")
-                                    .style("font-size", d => (radiusScale(d.papers) * 1.5) + "px")
+                                    .attr("dy", "1em")
+                                    .attr("dx", "-3em")
                                     .text(d => d.name_en);
-
+  
           // Define the tick function for simulation
           const simulation = d3.forceSimulation(nodeArray)
-                               .force("link", d3.forceLink(linkArray).distance(50).id(d => d.id))
-                               .force("charge", d3.forceManyBody().strength(-30))
+                               .force("link", d3.forceLink(linkArray).distance(20).id(d => d.id))
+                               .force("charge", d3.forceManyBody().strength(-1.0))
                                .force("center", d3.forceCenter(width / 2, height / 2))
-                               .force("collision", d3.forceCollide().radius(d => radiusScale(d.papers) + 5))
+                               .force("boundingBox", boundingBoxForce(width / 1.1, height / 1.1))
+                               .force("collision", d3.forceCollide().radius(20).strength(0.1)) // Add collision force
+                               .alphaDecay(0.01)  // Increased decay for faster settling
                                .on("tick", ticked);
-
+  
+          // Bounding box force function
+          function boundingBoxForce(width, height) {
+              return function(alpha) {
+                  nodeArray.forEach(node => {
+                      if (node.x < 0) node.vx += (0 - node.x) * alpha;
+                      if (node.x > width) node.vx += (width - node.x) * alpha;
+                      if (node.y < 0) node.vy += (0 - node.y) * alpha;
+                      if (node.y > height) node.vy += (height - node.y) * alpha;
+                  });
+              };
+          }
+  
           function ticked() {
               link.attr("x1", d => d.source.x).attr("y1", d => d.source.y)
                   .attr("x2", d => d.target.x).attr("y2", d => d.target.y);
-
+  
               linkLabel.attr("x", d => (d.source.x + d.target.x) / 2)
                        .attr("y", d => (d.source.y + d.target.y) / 2);
-
+  
               node.attr("cx", d => d.x).attr("cy", d => d.y);
-              nodeLabel.attr("x", d => d.x).attr("y", d => d.y);
+              nodeLabel.attr("x", d => d.x).attr("y", d => d.y - 10);
           }
-
+  
           function dragstarted(event, d) {
               if (!event.active) simulation.alphaTarget(0.3).restart();
               d.fx = d.x; d.fy = d.y;
           }
-
+  
           function dragged(event, d) { d.fx = event.x; d.fy = event.y; }
-
+  
           function dragended(event, d) {
               if (!event.active) simulation.alphaTarget(0);
               d.fx = null; d.fy = null;
           }
-
-          // Show popup on node click
-          function showPopup(event, d) {
-              const popup = document.getElementById('popup');
-              popup.style.left = (event.pageX + 15) + 'px'; // Offset for better visibility
-              popup.style.top = (event.pageY + 15) + 'px';
-              popup.innerHTML = `<strong>Author:</strong><br>${d.name_ru} (${d.name_en})<br>Papers: ${d.papers}`;
-              popup.style.display = 'block';
-          }
-
+  
+      // Show popup on node click
+      function showPopup(event, d) {
+          const popup = document.getElementById('popup');
+          popup.style.left = (event.pageX + 15) + 'px'; // Offset for better visibility
+          popup.style.top = (event.pageY + 15) + 'px';
+          popup.innerHTML = `<strong>Author:</strong><br>${d.name_ru} (${d.name_en})<br>Papers: ${d.papers}`;
+          popup.style.display = 'block';
+      }
+  
           svg.on("click", () => {
               document.getElementById('popup').style.display = 'none';
           });
       }
-
-      // Enhanced Export SVG function with inline styles and transformations
+  
+      // Enhanced Export SVG function
       function exportSVG() {
           const svgElement = document.querySelector("#graph svg");
-
+  
+          // Get all CSS styles from the document
+          const styles = getComputedStyles();
+  
           // Clone the original SVG element to modify it safely
           const svgClone = svgElement.cloneNode(true);
-
-          // Get the current transform
-          const transform = d3.zoomTransform(svgElement);
-
-          // Apply the current transform to the clone
-          svgClone.querySelector("g").setAttribute("transform", transform.toString());
-
-          // Inline all styles
-          inlineStyles(svgClone);
-
-          // Remove any script elements (for security)
-          const scripts = svgClone.querySelectorAll('script');
-          scripts.forEach(script => script.remove());
-
-          // Serialize the cloned SVG
+  
+          // Create a <style> element and add the CSS rules
+          const styleElement = document.createElement("style");
+          styleElement.textContent = styles;
+          svgClone.prepend(styleElement);
+  
+          // Serialize the cloned SVG with styles
           const serializer = new XMLSerializer();
           const source = serializer.serializeToString(svgClone);
-
+  
           const svgBlob = new Blob([source], { type: "image/svg+xml;charset=utf-8" });
           const url = URL.createObjectURL(svgBlob);
-
+  
           // Create a temporary download link and trigger the download
           const downloadLink = document.createElement("a");
           downloadLink.href = url;
@@ -305,60 +296,27 @@
           document.body.removeChild(downloadLink);
           URL.revokeObjectURL(url);
       }
-
-      // Function to inline computed styles
-      function inlineStyles(element) {
-          const allElements = element.querySelectorAll('*');
-          allElements.forEach(el => {
-              const computedStyle = window.getComputedStyle(el);
-              let styleString = "";
-              for (let i = 0; i < computedStyle.length; i++) {
-                  const key = computedStyle[i];
-                  const value = computedStyle.getPropertyValue(key);
-                  styleString += `${key}:${value};`;
+  
+      // Function to get computed CSS styles from the document
+      function getComputedStyles() {
+          let cssRules = "";
+  
+          // Iterate over all stylesheets
+          for (let sheet of document.styleSheets) {
+              try {
+                  if (sheet.cssRules) {
+                      // Iterate over all rules in the stylesheet
+                      for (let rule of sheet.cssRules) {
+                          cssRules += rule.cssText + "\n";
+                      }
+                  }
+              } catch (e) {
+                  console.warn("Cannot access stylesheet rules: ", e);
               }
-              el.setAttribute("style", styleString);
-          });
+          }
+          return cssRules;
       }
-
-      // Export to GEXF function
-      function exportGEXF() {
-          // Start building the GEXF string
-          let gexf = `<?xml version="1.0" encoding="UTF-8"?>\n`;
-          gexf += `<gexf xmlns="http://www.gexf.net/1.2draft" version="1.2">\n`;
-          gexf += `  <graph mode="static" defaultedgetype="undirected">\n`;
-
-          // Nodes
-          gexf += `    <nodes>\n`;
-          nodeArray.forEach(node => {
-              gexf += `      <node id="${node.id}" label="${node.name_en}" />\n`;
-          });
-          gexf += `    </nodes>\n`;
-
-          // Edges
-          gexf += `    <edges>\n`;
-          let edgeId = 0;
-          linkArray.forEach(link => {
-              gexf += `      <edge id="${edgeId}" source="${link.source}" target="${link.target}" />\n`;
-              edgeId++;
-          });
-          gexf += `    </edges>\n`;
-
-          gexf += `  </graph>\n`;
-          gexf += `</gexf>\n`;
-
-          // Create Blob and trigger download
-          const blob = new Blob([gexf], { type: "application/gexf+xml" });
-          const url = URL.createObjectURL(blob);
-          const downloadLink = document.createElement("a");
-          downloadLink.href = url;
-          downloadLink.download = "kyrgyz-nlp-coauthorship-network.gexf";
-          document.body.appendChild(downloadLink);
-          downloadLink.click();
-          document.body.removeChild(downloadLink);
-          URL.revokeObjectURL(url);
-      }
-  </script>
+      </script>
   </div>
 </body>
 </html>
