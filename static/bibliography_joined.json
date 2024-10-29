@@ -737,16 +737,6 @@
     "url": "https://cyberleninka.ru/article/n/testirovanie-programmy-morfologicheskogo-analizatora-estestvennogo-yazyka/pdf",
     "labels": "MOR, DIC"
   },
-  "sadykov2015kompyuter": {
-    "rawauthor": "Sadykov, T. and Zhumalieva, G. E. and Tumonbaev M. Zh. and Sharshembiev, B.",
-    "author": "sadykov and zhumalieva and tumonbaev and sharshembiev",
-    "title": "Kompyuternye lingvisticheskie osnovy kyrgyzskogo yazyka",
-    "publisher": "Bishkek",
-    "year": "2015",
-    "cyrtitle": "Компьютерные лингвистические основы кыргызского языка",
-    "cyrpublisher": "Бишкек",
-    "labels": "MSC"
-  },
   "shliazhko2024mgpt": {
     "rawauthor": "Shliazhko, Oleh and Fenogenova, Alena and Tikhonova, Maria and Kozlova, Anastasia and Mikhailov, Vladislav and Shavrina, Tatiana",
     "author": "shliazhko and fenogenova and tikhonova and kozlova and mikhailov and shavrina",
