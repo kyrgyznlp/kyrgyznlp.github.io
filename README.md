@@ -21,7 +21,7 @@ The paper is in the making; for now, if you use our work in your study, we'll be
 }
 ```
 
-## You might also find this interesting
+### You might also find this interesting
 
 * The Cramer Project: [website](https://thecramer.com), [huggingface](https://huggingface.co/the-cramer-project), [AkylAI Assistant](https://akylai.thecramer.com/)
 * Projects related to Kyrgyz language: [github/kyrgyz-nlp](https://github.com/kyrgyz-nlp)
