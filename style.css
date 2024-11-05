@@ -33,7 +33,7 @@ a {
 a:hover, a:focus {
   border-bottom-color: blue;
   border-bottom: 1px dotted;
-  color: #000000;
+  color: gray;
 }
 h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
