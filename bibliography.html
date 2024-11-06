@@ -422,7 +422,8 @@
                 const exportButton = document.createElement('button');
                 exportButton.className = 'export-button';
                 exportButton.textContent = 'Export Citation';
-                exportButton.onclick = () => openPopup(index);
+                exportButton.setAttribute('data-index', index);
+                exportButton.onclick = (event) => openPopup(event.target.getAttribute('data-index'));
                 card.appendChild(exportButton);
 
 
@@ -450,6 +451,7 @@
 
         // Open popup with citation data
         function openPopup(index) {
+            index = parseInt(index, 10);  // Convert to integer if necessary
             const popup = document.getElementById('citation-popup');
             const citations = researchData[index].citation;
 
