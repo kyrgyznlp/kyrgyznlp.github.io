@@ -423,7 +423,7 @@
                 exportButton.className = 'export-button';
                 exportButton.textContent = 'Export Citation';
                 exportButton.setAttribute('data-index', index);
-                exportButton.onclick = (event) => openPopup(event.target.getAttribute('data-index'));
+                exportButton.onclick = (event) => openPopup(data, event.target.getAttribute('data-index'));
                 card.appendChild(exportButton);
 
 
@@ -450,10 +450,10 @@
         }
 
         // Open popup with citation data
-        function openPopup(index) {
+        function openPopup(data, index) {
             index = parseInt(index, 10);  // Convert to integer if necessary
             const popup = document.getElementById('citation-popup');
-            const citations = researchData[index].citation;
+            const citations = data[index].citation;  // Use filtered data instead of global researchData
 
             document.getElementById('apa-citation-latin').textContent = citations.apaLatin;
             document.getElementById('apa-citation-cyr').textContent = citations.apaCyr;
