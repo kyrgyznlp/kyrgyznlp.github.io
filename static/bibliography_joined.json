@@ -595,7 +595,8 @@
     "rawauthor": "Abduvaliev, Ibraim and Sadykov, Tashpolot",
     "author": "abduvaliev and sadykov",
     "year": "1997",
-    "publisher": "<<Kyrgyzstan-Soros>> fondu"
+    "publisher": "<<Kyrgyzstan-Soros>> fondu",
+    "labels": "MOR"
   },
   "tohti2008character": {
     "title": "Character code conversion and misspelled word processing in Uyghur, Kazak, Kyrgyz multilingual information retrieval system",
@@ -760,5 +761,13 @@
     "pages": "55-64",
     "url": "https://www.mdpi.com/2078-2489/14/1/55/pdf",
     "labels": "APP, MOR"
+  },
+  "jumashev2024vector": {
+    "title": "Vector Embeddings and Signal Phrases for Word Sense Disambiguation in Kyrgyz",
+    "rawauthor": "Jumashev, Murat and Kadyrbekova, Aizat and Dzhumalieva, Gulnura and Sadambekov, Adilet and Tashpulatova, Aikokul and Omurkanov, Turgunbek and Washington, Jonathan North and Kasieva, Aida",
+    "author": "jumashev and kadyrbekova and dzhumalieva and sadambekov and tashpulatova and omurkanov and washington and kasieva",
+    "year": "2024",
+    "labels": "SEM",
+    "booktitle": "Proceedings of TurkLang-2024"
   }
 }
