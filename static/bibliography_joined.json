@@ -769,5 +769,13 @@
     "year": "2024",
     "labels": "SEM",
     "booktitle": "Proceedings of TurkLang-2024"
+  },
+  "alekseev2024kyrgyznlp": {
+    "title": "KyrgyzNLP: Challenges, Progress, and Future",
+    "rawauthor": "Alekseev, Anton and Turatali, Timur",
+    "author": "alekseev and turatali",
+    "year": "2024",
+    "labels": "MSC",
+    "booktitle": "Proceedings of the 12th International Conference on Analysis of Images, Social Networks and Texts (AIST-2024)"
   }
 }
