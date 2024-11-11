@@ -746,7 +746,8 @@
     "pages": "58-79",
     "year": "2024",
     "month": "01",
-    "issn": "2307-387X"
+    "issn": "2307-387X",
+    "labels": "SEM"
   },
   "mamtimin2023m2asrkirghiz":{
     "rawauthor": "Mamtimin, Ikram and Du, Wenqiang and Hamdulla, Askar",
@@ -756,6 +757,8 @@
     "year": "2023",
     "volume": "14",
     "number": "1",
-    "pages": "55-64"
+    "pages": "55-64",
+    "url": "https://www.mdpi.com/2078-2489/14/1/55/pdf",
+    "labels": "APP, MOR"
   }
 }
