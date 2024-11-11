@@ -630,5 +630,17 @@
     "mamtimin": {
         "en": "Mamtimin, I.",
         "ru": "Мамтимин, И."
+    },
+    "sadambekov": {
+        "en" : "Sadambekov, A.",
+        "ru": "Садамбеков, А."
+    },
+    "tashpulatova": {
+        "en": "Tashpulatova, A.",
+        "ru": "Ташпулатова А."
+    }, 
+    "omurkanov": {
+        "en": "Omurkanov, T.",
+        "ru": "Омурканов, Т."
     }
 }
