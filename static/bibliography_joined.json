@@ -747,5 +747,15 @@
     "year": "2024",
     "month": "01",
     "issn": "2307-387X"
+  },
+  "mamtimin2023m2asrkirghiz":{
+    "rawauthor": "Mamtimin, Ikram and Du, Wenqiang and Hamdulla, Askar",
+    "author": "mamtimin and du and hamdulla",
+    "title": "M2ASR-KIRGHIZ: A Free Kirghiz Speech Database and Accompanied Baselines"
+    "journal": "Information",
+    "year": "2023",
+    "volume": "14",
+    "number": "1",
+    "pages": "55-64"
   }
 }
