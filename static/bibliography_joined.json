@@ -777,5 +777,15 @@
     "year": "2024",
     "labels": "MSC",
     "booktitle": "Proceedings of the 12th International Conference on Analysis of Images, Social Networks and Texts (AIST-2024)"
-  }
+  },
+  "choi2021sentiment":{
+    "title": "A STUDY ON THE SENTIMENT ANALYSIS (POSITIVE, NEGATIVE) OF WORDS APPEARING IN KYRGYZ NEWS BY APPLYING THE DEEP LEARNING-BASED NLP (NATURAL LANGUAGE PROCESSING) TECHNIQUES FOR STUDENTS PRACTICE",
+    "rawauthor": "Young-Sang Choi and Sarvinoz Abdieva",
+    "author": "choi and abvieva",
+    "journal": "The Herald of KSUCTA, №3, 2021",
+    "number": "3",
+    "year": "2021",
+    "url": "https://api.semanticscholar.org/CorpusID:246327165",
+    "labels": "APP"
+}
 }
