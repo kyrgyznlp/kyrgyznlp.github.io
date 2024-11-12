@@ -787,5 +787,25 @@
     "year": "2021",
     "url": "https://api.semanticscholar.org/CorpusID:246327165",
     "labels": "APP"
-}
+},
+  "murat2024low": {
+    "title": "Low-resource POS tagging with Deep Affix Representation and Multi-head Attention",
+    "rawauthor": "Murat, Alim and Ali, Samat",
+    "author":"murat and ali",
+    "journal": "IEEE Access",
+    "year":"2024",
+    "publisher":"IEEE",
+    "labels": "MOR"
+  },
+  "benli2024using": {
+    "title": "Using Machine Learning Algorithms for Kyrgyz Sentiment Analysis",
+    "rawauthor": "İbrahim BENLİ and Bakyt SHARSHEMBAEV",
+    "author": "benli and sharshembayev",
+    "journal": "World Journal of Advanced Research and Reviews",
+    "year":"2024",
+    "volume":"23",
+    "number":"3",
+    "pages": "554–561",
+    "url": "https://wjarr.com/sites/default/files/WJARR-2024-2681.pdf"
+  }
 }
