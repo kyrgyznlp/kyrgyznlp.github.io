@@ -807,5 +807,13 @@
     "number":"3",
     "pages": "554–561",
     "url": "https://wjarr.com/sites/default/files/WJARR-2024-2681.pdf"
+  },
+  "kuriyozov2020cross": {
+    "title":"Cross-Lingual Word Embeddings for Turkic Languages",
+    "rawauthor": "Kuriyozov, Elmurod and Doval, Yerai and Gomez-Rodriguez, Carlos",
+    "author": "kuriyozov and doval and gomezrodriguez",
+    "booktitle": "Proceedings of the Twelfth Language Resources and Evaluation Conference",
+    "pages": "4054--4062",
+    "year": "2020"
   }
 }
