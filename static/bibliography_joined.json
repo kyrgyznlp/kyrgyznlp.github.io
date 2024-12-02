@@ -440,6 +440,13 @@
     "year": "2023",
     "labels": "SYN, COR"
   },
+  "benli2024":{
+    "rawauthor":"BENLİ, İbrahim and SHARSHEMBAEV, Bakyt",
+    "author": "benli and sharshembayev",
+    "title": "Dependency Parsing Based Treebank for Kyrgyz Language",
+    "year": "2024",
+    "labels": "SYN, COR"
+  },
   "alekseev2023benchmarking": {
     "title": "Benchmarking Multilabel Topic Classification in the Kyrgyz Language",
     "rawauthor": "Alekseev, Anton and Nikolenko, Sergey I. and  Kabaeva, Gulnara",
