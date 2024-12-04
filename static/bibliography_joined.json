@@ -823,7 +823,8 @@
     "booktitle": "Proceedings of the Twelfth Language Resources and Evaluation Conference",
     "pages": "4054--4062",
     "year": "2020",    
-    "labels": "SEM"
+    "labels": "SEM",
+    "url": "https://aclanthology.org/2020.lrec-1.499.pdf"
   },
   "tayirova2015statistical": {
     "title": "Statistical machine translation implementation and performance tests between Kyrgyz and Turkish Languages",
@@ -836,5 +837,15 @@
     "pages":"59--68",
     "url": "https://dergipark.org.tr/en/download/article-file/575960",
     "labels": "APP"
+  },
+  "khusainov2020first":{
+    "title": "First Results of the ``TurkLang-7'' Project: Creating Russian-Turkic Parallel Corpora and MT Systems",
+    "rawauthor": "Aidar Khusainov, Dzhavdet Suleymanov, Rinat Gilmullin , Alina Minsafina, Lenara Kubedinova, Nilufar Abdurakhmonova",
+    "author": "khusainov and suleymanov and gilmullin and minsafina and kubedinova and abdurakhmonova",
+    "url":"https://d1wqtxts1xzle7.cloudfront.net/100064609/paper8-libre.pdf?1679294135=&response-content-disposition=inline%3B+filename%3DFirst_Results_of_the_TurkLang_7_Project.pdf&Expires=1733320652&Signature=Uj~7I6Wpb2X8aXnvobQxdqS7NbLliuP6whT0U-w0OsgqoQDh35mH3V-4JB9vFu3T6kDTUzOEYHP1I9fk9iqpkJmiumEzQ6wbCTtBy0lgXPxYf955k2G9JFGBfykcrc8W1Xgewiblgh~hKAICxifc8ih~OkXhj5r-wLh2E-DZgfytJhk9-hQPYKMihBMDgwO-Gfv20GVPrK4vRKLmpQ2ykzM2lZMAZGXsn-afjyF4iuWzPY7UjhAzw2KpFflceNm5bot62W8PAVn-4ZjtYpkxxFkJdop8Z3bwnTVZ3V~DRqfR9b7IMt8Bvz3oOLhpCxPKd2q3ZFQLdKSdSbg1LwKnZA__&Key-Pair-Id=APKAJLOHF5GGSLRBV4ZA",
+    "labels":"APP, COR",
+    "pages":"90--101",
+    "journal":"CMCL",
+    "year":"2020"
   }
 }
