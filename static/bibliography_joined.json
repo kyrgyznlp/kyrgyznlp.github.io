@@ -813,7 +813,8 @@
     "volume":"23",
     "number":"3",
     "pages": "554–561",
-    "url": "https://wjarr.com/sites/default/files/WJARR-2024-2681.pdf"
+    "url": "https://wjarr.com/sites/default/files/WJARR-2024-2681.pdf",    
+    "labels": "APP"
   },
   "kuriyozov2020cross": {
     "title":"Cross-Lingual Word Embeddings for Turkic Languages",
@@ -821,6 +822,19 @@
     "author": "kuriyozov and doval and gomezrodriguez",
     "booktitle": "Proceedings of the Twelfth Language Resources and Evaluation Conference",
     "pages": "4054--4062",
-    "year": "2020"
+    "year": "2020",    
+    "labels": "SEM"
+  },
+  "tayirova2015statistical": {
+    "title": "Statistical machine translation implementation and performance tests between Kyrgyz and Turkish Languages",
+    "rawauthor": "N. Tayirova, M. Tekerek , U. Brimkulov", 
+    "author": "tayirova and tekerek and brimkulov",
+    "journal": "MANAS Journal of Engineering",
+    "year":"2015",
+    "volume":"3",
+    "issue": "2",
+    "pages":"59--68",
+    "url": "https://dergipark.org.tr/en/download/article-file/575960",
+    "labels": "APP"
   }
 }
