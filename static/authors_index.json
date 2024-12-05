@@ -5,7 +5,7 @@
     },
     "yumashev": {
         "en": "Jumashev, M.",
-        "ru": "Юмашев, М."
+        "ru": "Жумашев, М."
     },
     "salimzianov": {
         "en": "Salimzianov, I.",
@@ -662,5 +662,21 @@
     "gomezrodriguez":{
         "en": "Gomez-Rodriguez, C.",
         "ru": "Гомез-Родригез, К."
+    },
+    "khusainov" : {
+        "en": "Khusainov, A.",
+        "ru" : "Хусаинов, Ф."
+    },
+    "gilmullin": {
+        "en": "Gilmullin, R.",
+        "ru": "Гильмуллин, Р."
+    },
+    "minsafina": {
+        "en": "Minsafina, A.",
+        "ru": "Минсафина, А."
+    },
+    "kubedinova": {
+        "en": "Kubedinova, L.",
+        "ru:" "Кубединова, Л."
     }
 }
