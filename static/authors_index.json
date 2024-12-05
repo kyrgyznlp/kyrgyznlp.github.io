@@ -678,5 +678,17 @@
     "kubedinova": {
         "en": "Kubedinova, L.",
         "ru:" "Кубединова, Л."
+    },
+    "tekerek": {
+        "en" : "Tekerek, M.",
+        "ru": "Текерек, М."
+    },
+    "tayirova":{
+        "en":"Tayirova, N.",
+        "ru": "Таирова, Н."
+    },
+    "brimkulov":{
+        "en": "Brimkulov, U.",
+        "ru": "Бримкулов, У."
     }
 }
