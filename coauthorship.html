@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google Analytics -->
+  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-RPKGFED7WP"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -11,7 +11,7 @@
   </script>
 
   <meta charset="utf-8">
-  <!-- Yandex Metrika -->
+  <!-- Yandex.Metrika counter -->
   <script type="text/javascript">
      (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
      m[i].l=1*new Date();
@@ -21,7 +21,7 @@
      ym(98757050,"init",{clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true});
   </script>
   <noscript><div><img src="https://mc.yandex.ru/watch/98757050" style="position:absolute;left:-9999px;" alt=""></div></noscript>
-  <!--/ Yandex Metrika -->
+  <!-- / Yandex.Metrika counter -->
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Kyrgyz NLP Co‑Authorship Interactive Visualization">
@@ -32,48 +32,57 @@
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 
   <style>
-        /* reset gaps so the full‑width breakout lines up */
-        html,body{margin:0}
+    /* --- layout tweaks --- */
+    html,body{margin:0}
+    .container{
+      max-width:none;             /* allow full‑width */
+      padding:1rem 0.5rem 0;      /* tighter vertical space */
+    }
+    .masthead-title{
+      font-size:1.75rem;          /* slightly smaller heading  */
+      margin-bottom:0.5rem;
+    }
+    .content.list{
+      font-size:0.9rem;           /* compact descriptive text */
+      line-height:1.4;
+    }
 
-        .node{stroke:#fff;stroke-width:3px}
-        .link{stroke:#ccc;stroke-opacity:.3}
-        .node-label{font-size:9px;fill:#777;pointer-events:none}
-        .link-label{font-size:10px;fill:#999;pointer-events:none;opacity:0}
+    /* make the graph fit without scrollbars */
+    #graph{
+      width:calc(100% - 2px);     /* account for 1 px border on each side */
+      height:calc(100vh - 210px); /* leaves room for header/text/buttons */
+      border:1px solid gray;
+      margin:0 auto;
+    }
 
-        .popup{
-          position:absolute;
-          background:rgba(0,0,0,.8);
-          color:#fff;
-          padding:10px;
-          border-radius:5px;
-          display:none;
-          z-index:1000;
-          font-size:14px;
-        }
+    .node{stroke:#fff;stroke-width:3px}
+    .link{stroke:#ccc;stroke-opacity:.3}
+    .node-label{font-size:9px;fill:#777;pointer-events:none}
+    .link-label{font-size:10px;fill:#999;pointer-events:none;opacity:0}
+    .popup{
+      position:absolute;
+      background:rgba(0,0,0,.8);
+      color:#fff;
+      padding:10px;
+      border-radius:5px;
+      display:none;
+      z-index:1000;
+      font-size:14px;
+    }
 
-        /* ---------- changed ---------- */
-        /* break #graph out of the centered .container */
-        #graph{
-          width:100vw;                              /* truly viewport‑wide  */
-          margin-left:calc(-50vw + 50%);            /* cancel container centering */
-          height:calc(100vh - 240px);               /* almost full‑height  */
-          border:1px solid gray;
-        }
-        /* -------------------------------- */
+    svg{width:100%;height:100%}
 
-        svg{width:100%;height:100%}
-
-        .export-button{
-          padding:10px 15px;
-          margin:10px;
-          background:#BFD3E6;
-          color:#000;
-          border:none;
-          border-radius:5px;
-          cursor:pointer;
-          font-size:12px;
-        }
-        .export-button:hover{background:#45a049}
+    .export-button{
+      padding:10px 15px;
+      margin:10px;
+      background:#BFD3E6;
+      color:#000;
+      border:none;
+      border-radius:5px;
+      cursor:pointer;
+      font-size:12px;
+    }
+    .export-button:hover{background:#45a049}
   </style>
 
   <script src="https://d3js.org/d3.v7.min.js"></script>
@@ -83,13 +92,15 @@
   <div class="container">
     <header class="masthead">
       <h1 class="masthead-title"><a href="">KyrgyzNLP Co‑Authorship Graph</a></h1>
-      <nav class="masthead-nav"></nav>
     </header>
 
     <div class="content list">
-      This page accompanies the talk <a href="/pdf/kyrgyz-nlp-slides_2024.pdf">KyrgyzNLP: Challenges, Progress, and Future</a>
-      (AIST‑2024, 18 Oct 2024).<br><br>
-      Each node is an author; edges are papers. Scroll to zoom and drag nodes with the left mouse button.<br><br>
+      This is a webpage accompanying the talk
+      <a href="/pdf/kyrgyz-nlp-slides_2024.pdf">KyrgyzNLP: Challenges, Progress, and Future</a>
+      given on October 18th, 2024 at the
+      <a href="https://aistconf.org/">AIST‑2024</a> conference.<br>
+      Each node is the author, edges are papers. Scroll to zoom in/out, and drag the nodes with left click.
+      <br>
 
       <div id="graph"><svg></svg></div>
 
@@ -99,7 +110,7 @@
       <div id="popup" class="popup"></div>
     </div>
 
-    <!-- JS left untouched (only trimmed comments) -->
+    <!-- JS logic untouched -->
     <script>
       let authorsIndex,bibliography,authorPositions;
       let nodes={},links={},normalizedPositions={};
@@ -121,8 +132,10 @@
         authorPositions=d;
         const w=760,h=400;
         authorPositions.forEach(p=>{
-          normalizedPositions[p.author_id]={x:(p.x-Math.min(...authorPositions.map(pp=>pp.x)))/(Math.max(...authorPositions.map(pp=>pp.x))-Math.min(...authorPositions.map(pp=>pp.x)))*w,
-                                            y:(p.y-Math.min(...authorPositions.map(pp=>pp.y)))/(Math.max(...authorPositions.map(pp=>pp.y))-Math.min(...authorPositions.map(pp=>pp.y)))*h};
+          normalizedPositions[p.author_id]={
+            x:(p.x-Math.min(...authorPositions.map(pp=>pp.x)))/(Math.max(...authorPositions.map(pp=>pp.x))-Math.min(...authorPositions.map(pp=>pp.x)))*w,
+            y:(p.y-Math.min(...authorPositions.map(pp=>pp.y)))/(Math.max(...authorPositions.map(pp=>pp.y))-Math.min(...authorPositions.map(pp=>pp.y)))*h
+          };
         });
         loadJSON('authors_index.json',d2=>{
           authorsIndex=d2;
@@ -154,9 +167,12 @@
 
         const link=svgG.append('g').selectAll('line').data(linkArr).enter().append('line').attr('class','link');
         const linkLab=svgG.append('g').selectAll('text').data(linkArr).enter().append('text').attr('class','link-label').attr('dy','.0em').text(d=>d.label);
-        const node=svgG.append('g').selectAll('circle').data(nodeArr).enter().append('circle').attr('class','node').attr('r',8).attr('fill',d=>color(d.papers))
-                       .on('click',showPopup).call(d3.drag().on('start',dragstarted).on('drag',dragged).on('end',dragended));
-        const nodeLab=svgG.append('g').selectAll('text').data(nodeArr).enter().append('text').attr('class','node-label').attr('dy','1em').attr('dx','-3em').text(d=>d.name_en);
+        const node=svgG.append('g').selectAll('circle').data(nodeArr).enter().append('circle')
+                       .attr('class','node').attr('r',8).attr('fill',d=>color(d.papers))
+                       .on('click',showPopup)
+                       .call(d3.drag().on('start',dragstarted).on('drag',dragged).on('end',dragended));
+        const nodeLab=svgG.append('g').selectAll('text').data(nodeArr).enter().append('text')
+                          .attr('class','node-label').attr('dy','1em').attr('dx','-3em').text(d=>d.name_en);
 
         const sim=d3.forceSimulation(nodeArr)
                     .force('link',d3.forceLink(linkArr).distance(20).id(d=>d.id))
@@ -174,7 +190,8 @@
           if(n.y>h)n.vy+=(h-n.y)*a;
         });}
         function ticked(){
-          link.attr('x1',d=>d.source.x).attr('y1',d=>d.source.y).attr('x2',d=>d.target.x).attr('y2',d=>d.target.y);
+          link.attr('x1',d=>d.source.x).attr('y1',d=>d.source.y)
+              .attr('x2',d=>d.target.x).attr('y2',d=>d.target.y);
           linkLab.attr('x',d=>(d.source.x+d.target.x)/2).attr('y',d=>(d.source.y+d.target.y)/2);
           node.attr('cx',d=>d.x).attr('cy',d=>d.y);
           nodeLab.attr('x',d=>d.x).attr('y',d=>d.y-10);
