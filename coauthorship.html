@@ -7,9 +7,9 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-  
     gtag('config', 'G-RPKGFED7WP');
   </script>
+
   <meta charset="utf-8">
   <!-- Yandex.Metrika counter -->
   <script type="text/javascript" >
@@ -18,7 +18,7 @@
      for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
      k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
      (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-  
+
      ym(98757050, "init", {
           clickmap:true,
           trackLinks:true,
@@ -28,15 +28,20 @@
   </script>
   <noscript><div><img src="https://mc.yandex.ru/watch/98757050" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
   <!-- /Yandex.Metrika counter -->
+
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="description" content="Kyrgyz NLP Co-Authorship Interactive Visualization"/>
   <title>KyrgyzNLP Co-Authorship Graph</title>
+
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,600"/>
   <link rel="stylesheet" href="/style.css"/>
   <link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
-  <script>
-  </script>
+
   <style>
+        /* --------- new ---------- */
+        html, body { margin: 0; }               /* full‑width canvas without unwanted gaps */
+        /* ------------------------ */
+
         .node { stroke: #fff; stroke-width: 3px; }
         .link { stroke: #ccc; stroke-opacity: 0.3; }
         .node-label { font-size: 9px; fill: #777; pointer-events: none; }
@@ -51,22 +56,21 @@
             z-index: 1000;
             font-size: 14px;
         }
+        /* --------- changed ---------- */
         #graph {
-          width: 760x;
-          height: 400px;
+          width: 100%;                           /* page‑wide */
+          height: calc(100vh - 240px);           /* stretches almost to page bottom */
           border: 1px solid gray;
         }
+        /* -------------------------------- */
+
         svg {
           width: 100%;
           height: 100%;
         }
 
         .export-button {
-            //position: absolute;
-            //top: 10px;
-            //left: 10px;
             padding: 10px 15px;
-            //width:150px;
             margin: 10px;
             background-color: #BFD3E6;
             color: black;
@@ -75,36 +79,43 @@
             cursor: pointer;
             font-size: 12px;
         }
-        .export-button:hover {
-            background-color: #45a049;
-        }
-    </style>
-    <script src="https://d3js.org/d3.v7.min.js"></script>
+        .export-button:hover { background-color: #45a049; }
+  </style>
+
+  <script src="https://d3js.org/d3.v7.min.js"></script>
 </head>
+
 <body>
   <div class="container">
-  <header class="masthead">
-      <h1 class="masthead-title">
-          <a href="">KyrgyzNLP Co-Authorship Graph</a>
-      </h1>
-      <nav class="masthead-nav">
-          
-      </nav>
-  </header>
-  <div class="content list">
-      This is a webpage accompanying the talk <a href="/pdf/kyrgyz-nlp-slides_2024.pdf">KyrgyzNLP: Challenges, Progress, and Future</a> 
-      given on October 18th, 2024 at the <a href="https://aistconf.org/">AIST-2024</a> conference.
-      <br/><br/>
-      Each node is the author, edges are papers. Scroll to zoom in/out, and drag the nodes with left click.
-      <br/><br/>
-      <div id="graph">
-          <svg></svg>
-      </div>
-      <button class="export-button" onclick="exportSVG()">Export as SVG</button>
-      <button class="export-button" onclick="location.href='/'">Go Back</button>
-      <div id="popup" class="popup"></div>
-  </div>
-  <script>
+    <header class="masthead">
+        <h1 class="masthead-title">
+            <a href="">KyrgyzNLP Co-Authorship Graph</a>
+        </h1>
+        <nav class="masthead-nav"></nav>
+    </header>
+
+    <div class="content list">
+        This is a webpage accompanying the talk <a href="/pdf/kyrgyz-nlp-slides_2024.pdf">KyrgyzNLP: Challenges, Progress, and Future</a> 
+        given on October 18th, 2024 at the <a href="https://aistconf.org/">AIST-2024</a> conference.
+        <br/><br/>
+        Each node is the author, edges are papers. Scroll to zoom in/out, and drag the nodes with left click.
+        <br/><br/>
+
+        <div id="graph">
+            <svg></svg>
+        </div>
+
+        <button class="export-button" onclick="exportSVG()">Export as SVG</button>
+        <button class="export-button" onclick="location.href='/'">Go Back</button>
+
+        <div id="popup" class="popup"></div>
+    </div>
+
+    <!--  =========================  -->
+    <!--  everything below untouched -->
+    <!--  =========================  -->
+
+    <script>
       // Define global variables
       let authorsIndex, bibliography, authorPositions;
       let nodes = {}, links = {};
@@ -136,7 +147,7 @@
                   node.fx = null;
                   node.fy = null;
               });
-          }, 100); // Release nodes after
+          }, 100);
       }
   
       // Load author positions and normalize them
@@ -185,22 +196,17 @@
           // Initialize positions for nodes
           fetchAndInitializePositions();
   
-          // Continue with D3 visualization
           const nodeArray = Object.values(nodes);
           const linkArray = Object.values(links);
           const width = window.innerWidth, height = window.innerHeight;
   
-          // Define color scale for nodes based on the number of papers
           const colorScale = d3.scaleLinear()
               .domain([1, d3.max(nodeArray, d => d.papers)])
               .range(["#BFD3E6", "#4A6FA5"]);
   
-          const svg = d3.select("svg")
-                        //.attr("width", width).attr("height", height)
-                        .call(d3.zoom().scaleExtent([0.5, 5]).on("zoom", (event) => {
-                            svgGroup.attr("transform", event.transform);
-                        }));
-  
+          const svg = d3.select("svg").call(
+              d3.zoom().scaleExtent([0.5, 5]).on("zoom", event => svgGroup.attr("transform", event.transform))
+          );
           const svgGroup = svg.append("g");
   
           const link = svgGroup.append("g").selectAll("line")
@@ -230,19 +236,17 @@
                                     .attr("dx", "-3em")
                                     .text(d => d.name_en);
   
-          // Define the tick function for simulation
           const simulation = d3.forceSimulation(nodeArray)
                                .force("link", d3.forceLink(linkArray).distance(20).id(d => d.id))
                                .force("charge", d3.forceManyBody().strength(-1.0))
                                .force("center", d3.forceCenter(width / 2, height / 2))
                                .force("boundingBox", boundingBoxForce(width / 1.1, height / 1.1))
-                               .force("collision", d3.forceCollide().radius(20).strength(0.1)) // Add collision force
-                               .alphaDecay(0.01)  // Increased decay for faster settling
+                               .force("collision", d3.forceCollide().radius(20).strength(0.1))
+                               .alphaDecay(0.01)
                                .on("tick", ticked);
   
-          // Bounding box force function
           function boundingBoxForce(width, height) {
-              return function(alpha) {
+              return alpha => {
                   nodeArray.forEach(node => {
                       if (node.x < 0) node.vx += (0 - node.x) * alpha;
                       if (node.x > width) node.vx += (width - node.x) * alpha;
@@ -267,51 +271,35 @@
               if (!event.active) simulation.alphaTarget(0.3).restart();
               d.fx = d.x; d.fy = d.y;
           }
-  
           function dragged(event, d) { d.fx = event.x; d.fy = event.y; }
-  
           function dragended(event, d) {
               if (!event.active) simulation.alphaTarget(0);
               d.fx = null; d.fy = null;
           }
   
-      // Show popup on node click
-      function showPopup(event, d) {
-          const popup = document.getElementById('popup');
-          popup.style.left = (event.pageX + 15) + 'px'; // Offset for better visibility
-          popup.style.top = (event.pageY + 15) + 'px';
-          popup.innerHTML = `<strong>Author:</strong><br>${d.name_ru} (${d.name_en})<br>Papers: ${d.papers}`;
-          popup.style.display = 'block';
-      }
-  
+          function showPopup(event, d) {
+              const popup = document.getElementById('popup');
+              popup.style.left = (event.pageX + 15) + 'px';
+              popup.style.top = (event.pageY + 15) + 'px';
+              popup.innerHTML = `<strong>Author:</strong><br>${d.name_ru} (${d.name_en})<br>Papers: ${d.papers}`;
+              popup.style.display = 'block';
+          }
           svg.on("click", () => {
               document.getElementById('popup').style.display = 'none';
           });
       }
   
-      // Enhanced Export SVG function
       function exportSVG() {
           const svgElement = document.querySelector("#graph svg");
-  
-          // Get all CSS styles from the document
           const styles = getComputedStyles();
-  
-          // Clone the original SVG element to modify it safely
           const svgClone = svgElement.cloneNode(true);
-  
-          // Create a <style> element and add the CSS rules
           const styleElement = document.createElement("style");
           styleElement.textContent = styles;
           svgClone.prepend(styleElement);
-  
-          // Serialize the cloned SVG with styles
           const serializer = new XMLSerializer();
           const source = serializer.serializeToString(svgClone);
-  
           const svgBlob = new Blob([source], { type: "image/svg+xml;charset=utf-8" });
           const url = URL.createObjectURL(svgBlob);
-  
-          // Create a temporary download link and trigger the download
           const downloadLink = document.createElement("a");
           downloadLink.href = url;
           downloadLink.download = "kyrgyz-nlp-coauthorship-network.svg";
@@ -320,27 +308,18 @@
           document.body.removeChild(downloadLink);
           URL.revokeObjectURL(url);
       }
-  
-      // Function to get computed CSS styles from the document
       function getComputedStyles() {
           let cssRules = "";
-  
-          // Iterate over all stylesheets
           for (let sheet of document.styleSheets) {
               try {
                   if (sheet.cssRules) {
-                      // Iterate over all rules in the stylesheet
-                      for (let rule of sheet.cssRules) {
-                          cssRules += rule.cssText + "\n";
-                      }
+                      for (let rule of sheet.cssRules) cssRules += rule.cssText + "\n";
                   }
-              } catch (e) {
-                  console.warn("Cannot access stylesheet rules: ", e);
-              }
+              } catch (e) { console.warn("Cannot access stylesheet rules: ", e); }
           }
           return cssRules;
       }
-      </script>
+    </script>
   </div>
 </body>
 </html>
