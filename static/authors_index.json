@@ -690,5 +690,17 @@
     "brimkulov":{
         "en": "Brimkulov, U.",
         "ru": "Бримкулов, У."
+    },
+    "zhenishbekov":{
+        "en": "Zhenishbekov, I.",
+        "ru": "Женишбеков, И."
+    },
+    "suranbaev":{
+        "en": "Suranbaev, Zh.",
+        "ru": "Суранбаев, Ж."
+    },
+    "izmailov": {
+        "en": "Измаилов, Р.",
+        "ru": "Izmailov, R."
     }
 }
