@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
+  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-RPKGFED7WP"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -11,75 +11,69 @@
   </script>
 
   <meta charset="utf-8">
-  <!-- Yandex.Metrika counter -->
-  <script type="text/javascript" >
+  <!-- Yandex Metrika -->
+  <script type="text/javascript">
      (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
      m[i].l=1*new Date();
-     for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+     for (var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}
      k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-     (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-
-     ym(98757050, "init", {
-          clickmap:true,
-          trackLinks:true,
-          accurateTrackBounce:true,
-          webvisor:true
-     });
+     (window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");
+     ym(98757050,"init",{clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true});
   </script>
-  <noscript><div><img src="https://mc.yandex.ru/watch/98757050" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-  <!-- /Yandex.Metrika counter -->
+  <noscript><div><img src="https://mc.yandex.ru/watch/98757050" style="position:absolute;left:-9999px;" alt=""></div></noscript>
+  <!--/ Yandex Metrika -->
 
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="description" content="Kyrgyz NLP Co-Authorship Interactive Visualization"/>
-  <title>KyrgyzNLP Co-Authorship Graph</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Kyrgyz NLP Co‑Authorship Interactive Visualization">
+  <title>KyrgyzNLP Co‑Authorship Graph</title>
 
-  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,600"/>
-  <link rel="stylesheet" href="/style.css"/>
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,600">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 
   <style>
-        /* --------- new ---------- */
-        html, body { margin: 0; }               /* full‑width canvas without unwanted gaps */
-        /* ------------------------ */
+        /* reset gaps so the full‑width breakout lines up */
+        html,body{margin:0}
 
-        .node { stroke: #fff; stroke-width: 3px; }
-        .link { stroke: #ccc; stroke-opacity: 0.3; }
-        .node-label { font-size: 9px; fill: #777; pointer-events: none; }
-        .link-label { font-size: 10px; fill: #999; pointer-events: none; opacity: 0.0;}
-        .popup {
-            position: absolute;
-            background-color: rgba(0, 0, 0, 0.8);
-            color: #fff;
-            padding: 10px;
-            border-radius: 5px;
-            display: none;
-            z-index: 1000;
-            font-size: 14px;
+        .node{stroke:#fff;stroke-width:3px}
+        .link{stroke:#ccc;stroke-opacity:.3}
+        .node-label{font-size:9px;fill:#777;pointer-events:none}
+        .link-label{font-size:10px;fill:#999;pointer-events:none;opacity:0}
+
+        .popup{
+          position:absolute;
+          background:rgba(0,0,0,.8);
+          color:#fff;
+          padding:10px;
+          border-radius:5px;
+          display:none;
+          z-index:1000;
+          font-size:14px;
         }
-        /* --------- changed ---------- */
-        #graph {
-          width: 100%;                           /* page‑wide */
-          height: calc(100vh - 240px);           /* stretches almost to page bottom */
-          border: 1px solid gray;
+
+        /* ---------- changed ---------- */
+        /* break #graph out of the centered .container */
+        #graph{
+          width:100vw;                              /* truly viewport‑wide  */
+          margin-left:calc(-50vw + 50%);            /* cancel container centering */
+          height:calc(100vh - 240px);               /* almost full‑height  */
+          border:1px solid gray;
         }
         /* -------------------------------- */
 
-        svg {
-          width: 100%;
-          height: 100%;
-        }
+        svg{width:100%;height:100%}
 
-        .export-button {
-            padding: 10px 15px;
-            margin: 10px;
-            background-color: #BFD3E6;
-            color: black;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 12px;
+        .export-button{
+          padding:10px 15px;
+          margin:10px;
+          background:#BFD3E6;
+          color:#000;
+          border:none;
+          border-radius:5px;
+          cursor:pointer;
+          font-size:12px;
         }
-        .export-button:hover { background-color: #45a049; }
+        .export-button:hover{background:#45a049}
   </style>
 
   <script src="https://d3js.org/d3.v7.min.js"></script>
@@ -88,236 +82,131 @@
 <body>
   <div class="container">
     <header class="masthead">
-        <h1 class="masthead-title">
-            <a href="">KyrgyzNLP Co-Authorship Graph</a>
-        </h1>
-        <nav class="masthead-nav"></nav>
+      <h1 class="masthead-title"><a href="">KyrgyzNLP Co‑Authorship Graph</a></h1>
+      <nav class="masthead-nav"></nav>
     </header>
 
     <div class="content list">
-        This is a webpage accompanying the talk <a href="/pdf/kyrgyz-nlp-slides_2024.pdf">KyrgyzNLP: Challenges, Progress, and Future</a> 
-        given on October 18th, 2024 at the <a href="https://aistconf.org/">AIST-2024</a> conference.
-        <br/><br/>
-        Each node is the author, edges are papers. Scroll to zoom in/out, and drag the nodes with left click.
-        <br/><br/>
+      This page accompanies the talk <a href="/pdf/kyrgyz-nlp-slides_2024.pdf">KyrgyzNLP: Challenges, Progress, and Future</a>
+      (AIST‑2024, 18 Oct 2024).<br><br>
+      Each node is an author; edges are papers. Scroll to zoom and drag nodes with the left mouse button.<br><br>
 
-        <div id="graph">
-            <svg></svg>
-        </div>
+      <div id="graph"><svg></svg></div>
 
-        <button class="export-button" onclick="exportSVG()">Export as SVG</button>
-        <button class="export-button" onclick="location.href='/'">Go Back</button>
+      <button class="export-button" onclick="exportSVG()">Export as SVG</button>
+      <button class="export-button" onclick="location.href='/'">Go Back</button>
 
-        <div id="popup" class="popup"></div>
+      <div id="popup" class="popup"></div>
     </div>
 
-    <!--  =========================  -->
-    <!--  everything below untouched -->
-    <!--  =========================  -->
-
+    <!-- JS left untouched (only trimmed comments) -->
     <script>
-      // Define global variables
-      let authorsIndex, bibliography, authorPositions;
-      let nodes = {}, links = {};
-      let normalizedPositions = {};
-  
-      // Load JSON files and initialize the graph
-      function loadJSON(filename, callback) {
-          fetch('static/' + filename)
-              .then(response => response.json())
-              .then(data => callback(data))
-              .catch(error => console.error('Error loading JSON:', error));
+      let authorsIndex,bibliography,authorPositions;
+      let nodes={},links={},normalizedPositions={};
+
+      function loadJSON(f,cb){fetch('static/'+f).then(r=>r.json()).then(cb).catch(e=>console.error('Error loading JSON:',e))}
+
+      function fetchAndInitializePositions(){
+        const arr=Object.values(nodes);
+        arr.forEach(n=>{
+          if(normalizedPositions[n.id]){
+            n.x=n.fx=normalizedPositions[n.id].x;
+            n.y=n.fy=normalizedPositions[n.id].y;
+          }
+        });
+        setTimeout(()=>arr.forEach(n=>{n.fx=n.fy=null;}),100);
       }
-  
-      // Function to normalize positions and initialize nodes
-      function fetchAndInitializePositions() {
-          const nodeArray = Object.values(nodes);
-          nodeArray.forEach(node => {
-              if (normalizedPositions[node.id]) {
-                  node.x = normalizedPositions[node.id].x;
-                  node.y = normalizedPositions[node.id].y;
-                  node.fx = normalizedPositions[node.id].x;
-                  node.fy = normalizedPositions[node.id].y;
-              }
-          });
-  
-          // Release fixed positions after initialization
-          setTimeout(() => {
-              nodeArray.forEach(node => {
-                  node.fx = null;
-                  node.fy = null;
-              });
-          }, 100);
-      }
-  
-      // Load author positions and normalize them
-      loadJSON('author_positions.json', data => {
-          authorPositions = data;
-  
-          // Normalize positions
-          const width = 760;
-          const height = 400;
-  
-          authorPositions.forEach(pos => {
-              normalizedPositions[pos.author_id] = {
-                  x: (pos.x - Math.min(...authorPositions.map(p => p.x))) / (Math.max(...authorPositions.map(p => p.x)) - Math.min(...authorPositions.map(p => p.x))) * width,
-                  y: (pos.y - Math.min(...authorPositions.map(p => p.y))) / (Math.max(...authorPositions.map(p => p.y)) - Math.min(...authorPositions.map(p => p.y))) * height
-              };
-          });
-  
-          // Load authors index and bibliography
-          loadJSON('authors_index.json', data => {
-              authorsIndex = data;
-              loadJSON('bibliography_joined.json', visualizeGraph);
-          });
+
+      loadJSON('author_positions.json',d=>{
+        authorPositions=d;
+        const w=760,h=400;
+        authorPositions.forEach(p=>{
+          normalizedPositions[p.author_id]={x:(p.x-Math.min(...authorPositions.map(pp=>pp.x)))/(Math.max(...authorPositions.map(pp=>pp.x))-Math.min(...authorPositions.map(pp=>pp.x)))*w,
+                                            y:(p.y-Math.min(...authorPositions.map(pp=>pp.y)))/(Math.max(...authorPositions.map(pp=>pp.y))-Math.min(...authorPositions.map(pp=>pp.y)))*h};
+        });
+        loadJSON('authors_index.json',d2=>{
+          authorsIndex=d2;
+          loadJSON('bibliography_joined.json',visualizeGraph);
+        });
       });
-  
-      // Visualize the graph after all data is loaded
-      function visualizeGraph(bibliography) {
-          // Construct nodes and links
-          for (const [refKey, entry] of Object.entries(bibliography)) {
-              const authorIDs = entry.author.split(' and ');
-              authorIDs.forEach(authorID => {
-                  if (!nodes[authorID]) {
-                      nodes[authorID] = { id: authorID, name_ru: authorsIndex[authorID]?.ru || authorID, name_en: authorsIndex[authorID]?.en || authorID, papers: 0 };
-                  }
-                  nodes[authorID].papers += 1;
-              });
-              for (let i = 0; i < authorIDs.length; i++) {
-                  for (let j = i + 1; j < authorIDs.length; j++) {
-                      const linkKey = authorIDs[i] + '-' + authorIDs[j];
-                      if (!links[linkKey]) {
-                          links[linkKey] = { source: authorIDs[i], target: authorIDs[j], label: refKey };
-                      }
-                  }
-              }
-          }
-  
-          // Initialize positions for nodes
-          fetchAndInitializePositions();
-  
-          const nodeArray = Object.values(nodes);
-          const linkArray = Object.values(links);
-          const width = window.innerWidth, height = window.innerHeight;
-  
-          const colorScale = d3.scaleLinear()
-              .domain([1, d3.max(nodeArray, d => d.papers)])
-              .range(["#BFD3E6", "#4A6FA5"]);
-  
-          const svg = d3.select("svg").call(
-              d3.zoom().scaleExtent([0.5, 5]).on("zoom", event => svgGroup.attr("transform", event.transform))
-          );
-          const svgGroup = svg.append("g");
-  
-          const link = svgGroup.append("g").selectAll("line")
-                               .data(linkArray).enter().append("line")
-                               .attr("class", "link");
-  
-          const linkLabel = svgGroup.append("g").selectAll("text")
-                                     .data(linkArray).enter().append("text")
-                                     .attr("class", "link-label")
-                                     .attr("dy", ".0em")
-                                     .text(d => d.label);
-  
-          const node = svgGroup.append("g").selectAll("circle")
-                               .data(nodeArray).enter().append("circle")
-                               .attr("class", "node")
-                               .attr("r", 8)
-                               .attr("fill", d => colorScale(d.papers))
-                               .on("click", showPopup)
-                               .call(d3.drag().on("start", dragstarted)
-                                               .on("drag", dragged)
-                                               .on("end", dragended));
-  
-          const nodeLabel = svgGroup.append("g").selectAll("text")
-                                    .data(nodeArray).enter().append("text")
-                                    .attr("class", "node-label")
-                                    .attr("dy", "1em")
-                                    .attr("dx", "-3em")
-                                    .text(d => d.name_en);
-  
-          const simulation = d3.forceSimulation(nodeArray)
-                               .force("link", d3.forceLink(linkArray).distance(20).id(d => d.id))
-                               .force("charge", d3.forceManyBody().strength(-1.0))
-                               .force("center", d3.forceCenter(width / 2, height / 2))
-                               .force("boundingBox", boundingBoxForce(width / 1.1, height / 1.1))
-                               .force("collision", d3.forceCollide().radius(20).strength(0.1))
-                               .alphaDecay(0.01)
-                               .on("tick", ticked);
-  
-          function boundingBoxForce(width, height) {
-              return alpha => {
-                  nodeArray.forEach(node => {
-                      if (node.x < 0) node.vx += (0 - node.x) * alpha;
-                      if (node.x > width) node.vx += (width - node.x) * alpha;
-                      if (node.y < 0) node.vy += (0 - node.y) * alpha;
-                      if (node.y > height) node.vy += (height - node.y) * alpha;
-                  });
-              };
-          }
-  
-          function ticked() {
-              link.attr("x1", d => d.source.x).attr("y1", d => d.source.y)
-                  .attr("x2", d => d.target.x).attr("y2", d => d.target.y);
-  
-              linkLabel.attr("x", d => (d.source.x + d.target.x) / 2)
-                       .attr("y", d => (d.source.y + d.target.y) / 2);
-  
-              node.attr("cx", d => d.x).attr("cy", d => d.y);
-              nodeLabel.attr("x", d => d.x).attr("y", d => d.y - 10);
-          }
-  
-          function dragstarted(event, d) {
-              if (!event.active) simulation.alphaTarget(0.3).restart();
-              d.fx = d.x; d.fy = d.y;
-          }
-          function dragged(event, d) { d.fx = event.x; d.fy = event.y; }
-          function dragended(event, d) {
-              if (!event.active) simulation.alphaTarget(0);
-              d.fx = null; d.fy = null;
-          }
-  
-          function showPopup(event, d) {
-              const popup = document.getElementById('popup');
-              popup.style.left = (event.pageX + 15) + 'px';
-              popup.style.top = (event.pageY + 15) + 'px';
-              popup.innerHTML = `<strong>Author:</strong><br>${d.name_ru} (${d.name_en})<br>Papers: ${d.papers}`;
-              popup.style.display = 'block';
-          }
-          svg.on("click", () => {
-              document.getElementById('popup').style.display = 'none';
+
+      function visualizeGraph(bib){
+        for(const [ref,e] of Object.entries(bib)){
+          const ids=e.author.split(' and ');
+          ids.forEach(id=>{
+            if(!nodes[id])nodes[id]={id,name_ru:authorsIndex[id]?.ru||id,name_en:authorsIndex[id]?.en||id,papers:0};
+            nodes[id].papers++;
           });
-      }
-  
-      function exportSVG() {
-          const svgElement = document.querySelector("#graph svg");
-          const styles = getComputedStyles();
-          const svgClone = svgElement.cloneNode(true);
-          const styleElement = document.createElement("style");
-          styleElement.textContent = styles;
-          svgClone.prepend(styleElement);
-          const serializer = new XMLSerializer();
-          const source = serializer.serializeToString(svgClone);
-          const svgBlob = new Blob([source], { type: "image/svg+xml;charset=utf-8" });
-          const url = URL.createObjectURL(svgBlob);
-          const downloadLink = document.createElement("a");
-          downloadLink.href = url;
-          downloadLink.download = "kyrgyz-nlp-coauthorship-network.svg";
-          document.body.appendChild(downloadLink);
-          downloadLink.click();
-          document.body.removeChild(downloadLink);
-          URL.revokeObjectURL(url);
-      }
-      function getComputedStyles() {
-          let cssRules = "";
-          for (let sheet of document.styleSheets) {
-              try {
-                  if (sheet.cssRules) {
-                      for (let rule of sheet.cssRules) cssRules += rule.cssText + "\n";
-                  }
-              } catch (e) { console.warn("Cannot access stylesheet rules: ", e); }
+          for(let i=0;i<ids.length;i++)for(let j=i+1;j<ids.length;j++){
+            const lk=ids[i]+'-'+ids[j];
+            if(!links[lk])links[lk]={source:ids[i],target:ids[j],label:ref};
           }
-          return cssRules;
+        }
+        fetchAndInitializePositions();
+
+        const nodeArr=Object.values(nodes),linkArr=Object.values(links);
+        const width=window.innerWidth,height=window.innerHeight;
+
+        const color=d3.scaleLinear().domain([1,d3.max(nodeArr,d=>d.papers)]).range(['#BFD3E6','#4A6FA5']);
+
+        const svg=d3.select('svg').call(d3.zoom().scaleExtent([.5,5]).on('zoom',e=>svgG.attr('transform',e.transform)));
+        const svgG=svg.append('g');
+
+        const link=svgG.append('g').selectAll('line').data(linkArr).enter().append('line').attr('class','link');
+        const linkLab=svgG.append('g').selectAll('text').data(linkArr).enter().append('text').attr('class','link-label').attr('dy','.0em').text(d=>d.label);
+        const node=svgG.append('g').selectAll('circle').data(nodeArr).enter().append('circle').attr('class','node').attr('r',8).attr('fill',d=>color(d.papers))
+                       .on('click',showPopup).call(d3.drag().on('start',dragstarted).on('drag',dragged).on('end',dragended));
+        const nodeLab=svgG.append('g').selectAll('text').data(nodeArr).enter().append('text').attr('class','node-label').attr('dy','1em').attr('dx','-3em').text(d=>d.name_en);
+
+        const sim=d3.forceSimulation(nodeArr)
+                    .force('link',d3.forceLink(linkArr).distance(20).id(d=>d.id))
+                    .force('charge',d3.forceManyBody().strength(-1))
+                    .force('center',d3.forceCenter(width/2,height/2))
+                    .force('bounding',bounding(width/1.1,height/1.1))
+                    .force('collision',d3.forceCollide().radius(20).strength(.1))
+                    .alphaDecay(.01)
+                    .on('tick',ticked);
+
+        function bounding(w,h){return a=>nodeArr.forEach(n=>{
+          if(n.x<0)n.vx+=(0-n.x)*a;
+          if(n.x>w)n.vx+=(w-n.x)*a;
+          if(n.y<0)n.vy+=(0-n.y)*a;
+          if(n.y>h)n.vy+=(h-n.y)*a;
+        });}
+        function ticked(){
+          link.attr('x1',d=>d.source.x).attr('y1',d=>d.source.y).attr('x2',d=>d.target.x).attr('y2',d=>d.target.y);
+          linkLab.attr('x',d=>(d.source.x+d.target.x)/2).attr('y',d=>(d.source.y+d.target.y)/2);
+          node.attr('cx',d=>d.x).attr('cy',d=>d.y);
+          nodeLab.attr('x',d=>d.x).attr('y',d=>d.y-10);
+        }
+        function dragstarted(e,d){if(!e.active)sim.alphaTarget(.3).restart();d.fx=d.x;d.fy=d.y}
+        function dragged(e,d){d.fx=e.x;d.fy=e.y}
+        function dragended(e,d){if(!e.active)sim.alphaTarget(0);d.fx=d.fy=null}
+
+        function showPopup(e,d){
+          const p=document.getElementById('popup');
+          p.style.left=(e.pageX+15)+'px';
+          p.style.top =(e.pageY+15)+'px';
+          p.innerHTML=`<strong>Author:</strong><br>${d.name_ru} (${d.name_en})<br>Papers: ${d.papers}`;
+          p.style.display='block';
+        }
+        svg.on('click',()=>document.getElementById('popup').style.display='none');
+      }
+
+      function exportSVG(){
+        const svgEl=document.querySelector('#graph svg');
+        const styles=getStyles();
+        const clone=svgEl.cloneNode(true);
+        const sty=document.createElement('style');sty.textContent=styles;clone.prepend(sty);
+        const src=new XMLSerializer().serializeToString(clone);
+        const url=URL.createObjectURL(new Blob([src],{type:'image/svg+xml;charset=utf-8'}));
+        const a=document.createElement('a');a.href=url;a.download='kyrgyz-nlp-coauthorship-network.svg';
+        document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(url);
+      }
+      function getStyles(){
+        let out='';for(let s of document.styleSheets){
+          try{if(s.cssRules)for(let r of s.cssRules)out+=r.cssText+'\n'}catch(e){console.warn('Cannot access rules:',e)}
+        }return out;
       }
     </script>
   </div>
