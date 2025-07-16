@@ -856,21 +856,5 @@
     "labels": "SYN, APP",
     "journal": "To be published in the Journal of Mathematical Sciences (translation from Russian 2024 Zapiski POMI version is in progress)",
     "year": "2025"
-  },
-  "turatali2025human":{
-    "rawauthor": "Turatali, T. and Alekseev, A. and Jumalieva, G. and Kabaeva, G. and Nikolenko, S.",
-    "author": "turatali and alekseev and zhumalieva and kabaeva and nikolenko",
-    "title": "Human-Annotated NER Dataset for the Kyrgyz Language",
-    "booktitle": "Accepted to TurkLang-2025, Istanbul, Turkey, September 17--21",
-    "year": "2025",
-    "labels": "APP"
-},
-  "turatali2025bridging": {
-      "rawauthor": "Turatali, T. and Turdubaeva, A. and Zhenishbekov, I. and Suranbaev, Zh. and Alekseev, A. and Izmailov, R.",
-      "author": "turatali and turdubaeva and zhenishbekov and suranbaev and alekseev and izmailov",
-      "title": "Bridging the Gap in Less-Resourced languages: Building a Benchmark for Kyrgyz Language Models",
-      "booktitle": "Accepted to TurkLang-2025, Istanbul, Turkey, September 17--21",
-      "year": "2025",
-      "labels": "APP"
   }
 }
