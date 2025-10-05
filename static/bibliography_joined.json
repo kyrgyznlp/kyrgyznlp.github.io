@@ -872,5 +872,15 @@
     "booktitle": "Accepted to TurkLang-2025, Istanbul, Turkey, September 17--21",
     "year": "2025",
     "labels": "APP"
+  },
+  "erkinova2025evaluating":{
+    "title": "Evaluating ChatGPT’s Ability to Pass the Turing Test in Kyrgyz Language",
+    "rawauthor": "Nurayim Erkinova, Bakyt Sharshebaev, Rita Ismailova",
+    "author": "erkinova and sharshembayev and ismailova",
+    "journal": "News of Osh Technological University",
+    "volume": "1",
+    "number": "25",
+    "pages": "51-61",
+    "year": "2025"
   }
 }
