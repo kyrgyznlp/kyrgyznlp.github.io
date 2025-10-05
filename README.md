@@ -9,17 +9,16 @@ Here we present
 
 Moved from [alexeyev/kyrgyz_nlp](https://alexeyev.github.io/kyrgyz_nlp/).
 
-The paper is in press. If you use our work in your study, we'll be grateful if you cite it as an [arXiv preprint](https://arxiv.org/abs/2411.05503) reference for now.
+If you use our work in your study, we'll be grateful if you cite it.
 
 ```bibtex
-@misc{alekseev2024kyrgyznlpchallengesprogressfuture,
-      title={KyrgyzNLP: Challenges, Progress, and Future}, 
-      author={Anton Alekseev and Timur Turatali},
-      year={2024},
-      eprint={2411.05503},
-      archivePrefix={arXiv},
-      primaryClass={cs.CL},
-      url={https://arxiv.org/abs/2411.05503}, 
+@inproceedings{alekseev2024kyrgyznlp,
+  title={KyrgyzNLP: challenges, progress, and future},
+  author={Alekseev, Anton and Turatali, Timur},
+  booktitle={International Conference on Analysis of Images, Social Networks and Texts},
+  pages={3--39},
+  year={2024},
+  organization={Springer}
 }
 ```
 
