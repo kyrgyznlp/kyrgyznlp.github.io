@@ -158,7 +158,7 @@
         const color=d3.scaleLinear().domain([1,d3.max(nodeArr,d=>d.papers)]).range(['#BFD3E6','#4A6FA5']);
 
         const svg=d3.select('svg').call(d3.zoom().scaleExtent([.5,5]).on('zoom',e=>svgG.attr('transform',e.transform)));
-        const width=svg.node().getBBox().width,height=svg.node().getBBox().height;;
+        const width=document.getElementById("graph").clientWidth,height=document.getElementById("graph").clientHeight;
         const svgG=svg.append('g');
 
         const link=svgG.append('g').selectAll('line').data(linkArr).enter().append('line').attr('class','link');
@@ -172,9 +172,9 @@
         
         const sim=d3.forceSimulation(nodeArr)
                     .force('link',d3.forceLink(linkArr).distance(20).id(d=>d.id))
-                    .force('charge',d3.forceManyBody().strength(-1))
+                    .force('charge',d3.forceManyBody().strength(-10))
                     .force('center',d3.forceCenter(width/2,height/2))
-                    .force('collision',d3.forceCollide().radius(24).strength(0.5))
+                    .force('collision',d3.forceCollide().radius(22).strength(0.5))
                     .alphaDecay(.01)
                     .on('tick',ticked);
         
