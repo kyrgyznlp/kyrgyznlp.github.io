@@ -56,7 +56,7 @@
     }
 
     .node{stroke:#fff;stroke-width:3px}
-    .link{stroke:#ccc;stroke-opacity:.3}
+    .link{stroke:#ccc;stroke-opacity:.5}
     .node-label{font-size:9px;fill:#777;pointer-events:none}
     .link-label{font-size:10px;fill:#999;pointer-events:none;opacity:0}
     .popup{
@@ -175,7 +175,7 @@
                     .force('charge',d3.forceManyBody().strength(-1))
                     .force('center',d3.forceCenter(width/2,height/2))
                     .force('bounding',bounding(width/1.1,height/1.1))
-                    .force('collision',d3.forceCollide().radius(50).strength(.1))
+                    .force('collision',d3.forceCollide().radius(30).strength(.1))
                     .alphaDecay(.01)
                     .on('tick',ticked);
 
