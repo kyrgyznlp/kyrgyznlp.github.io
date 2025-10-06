@@ -882,5 +882,12 @@
     "number": "25",
     "pages": "51-61",
     "year": "2025"
+  },
+  "jumashev2025wmt": {
+    "title": "The Kyrgyz Seed Dataset Submission to the WMT25 Open Language Data Initiative Shared Task",
+    "rawauthor": "Jumashev, Murat and Tillabaeva, Alina and Kasieva, Aida and Omurkanov, Turgunbek and Musaeva, Akylai and Emil kyzy, Meerim and Chagataeva, Gulaiym and Washington, Jonathan",
+    "author": "yumashev and tillabaeva and kasieva and omurkanov and musaeva and emilkyzy and chagataeva and washington",
+    "year": "2025",
+    "booktitle": "Accepted to EMNLP 2025 (WMT25)"
   }
 }
