@@ -172,18 +172,18 @@
         
         const sim=d3.forceSimulation(nodeArr)
                     .force('link',d3.forceLink(linkArr).distance(20).id(d=>d.id))
-                    .force('charge',d3.forceManyBody().strength(-10))
+                    .force('charge',d3.forceManyBody().strength(0.5))
                     .force('center',d3.forceCenter(width/2,height/2))
-                    .force('collision',d3.forceCollide().radius(22).strength(0.5))
+                    .force('collision',d3.forceCollide().radius(25).strength(0.5))
                     .alphaDecay(.01)
                     .on('tick',ticked);
         
         function ticked(){
           // // node.attr('cx',d=>d.x).attr('cy',d=>d.y);
-          let pad = 50;
+          let pad = 20;
           node
-            .attr("cx", function(d) { if (d.x > width - pad || d.x < pad) {d.vx = 0;};  d.x = Math.max(pad, Math.min(width - pad, d.x)); return d.x; })
-            .attr("cy", function(d) { if (d.y > height - pad || d.y < pad) {d.vy = 0;};  d.y = Math.max(pad, Math.min(height - pad, d.y)); return d.y; });
+            .attr("cx", function(d) { if (d.x > width - pad || d.x < pad) {d.vx *= -1;};  d.x = Math.max(pad, Math.min(width - pad, d.x)); return d.x; })
+            .attr("cy", function(d) { if (d.y > height - pad || d.y < pad) {d.vy *= -1;};  d.y = Math.max(pad, Math.min(height - pad, d.y)); return d.y; });
           
           link.attr('x1',d=>d.source.x).attr('y1',d=>d.source.y)
               .attr('x2',d=>d.target.x).attr('y2',d=>d.target.y);
