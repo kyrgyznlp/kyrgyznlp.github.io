@@ -170,20 +170,20 @@
         const nodeLab=svgG.append('g').selectAll('text').data(nodeArr).enter().append('text')
                           .attr('class','node-label').attr('dy','1em').attr('dx','-3em').text(d=>d.name_en);
 
-
-        function bounding(w,h){return a=>nodeArr.forEach(n=>{
-          if(n.x<0)n.vx+=(0-n.x)*a;
-          if(n.x>w)n.vx+=(w-n.x)*a;
-          if(n.y<0)n.vy+=(0-n.y)*a;
-          if(n.y>h)n.vy+=(h-n.y)*a;
-        });}
+        function box_force() { 
+          for (var i = 0, n = nodeArr.length; i < n; ++i) {
+            curr_node = nodeArr[i];
+            curr_node.x = Math.max(30, Math.min(width - 30, curr_node.x));
+            curr_node.y = Math.max(30, Math.min(height - 30, curr_node.y));
+          }
+        }
         
         const sim=d3.forceSimulation(nodeArr)
                     .force('link',d3.forceLink(linkArr).distance(20).id(d=>d.id))
                     .force('charge',d3.forceManyBody().strength(-1))
                     .force('center',d3.forceCenter(width/2,height/2))
-                    .force('bounds',bounding(width/1.3,height/1.3))
                     .force('collision',d3.forceCollide().radius(16).strength(0.2))
+                    .force('box_force', box_force)
                     .alphaDecay(.01)
                     .on('tick',ticked);
         
