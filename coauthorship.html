@@ -173,19 +173,20 @@
         const sim=d3.forceSimulation(nodeArr)
                     .force('link',d3.forceLink(linkArr).distance(20).id(d=>d.id))
                     .force('charge',d3.forceManyBody().strength(-1))
-                    .force('center',d3.forceCenter(width/2,height/2))
-                    .force('collision',d3.forceCollide().radius(21).strength(0.5))
+                    .force('center',d3.forceCenter(width/5,height/2))
+                    .force('collision',d3.forceCollide().radius(24).strength(0.5))
                     .alphaDecay(.01)
                     .on('tick',ticked);
         
         function ticked(){
           // // node.attr('cx',d=>d.x).attr('cy',d=>d.y);
+          let pad = 50;
           node
-            .attr("cx", function(d) { d.x = Math.max(30, Math.min(width - 30, d.x)); return d.x; })
-            .attr("cy", function(d) { d.y = Math.max(30, Math.min(height - 30, d.y)); return d.y; });
+            .attr("cx", function(d) { if (d.x > width - pad || d.x < pad) {d.vx = 0;};  d.x = Math.max(pad, Math.min(width - pad, d.x)); return d.x; })
+            .attr("cy", function(d) { if (d.y > height - pad || d.y < pad) {d.vy = 0;};  d.y = Math.max(pad, Math.min(height - pad, d.y)); return d.y; });
           
-          // link.attr('x1',d=>d.source.x).attr('y1',d=>d.source.y)
-          //     .attr('x2',d=>d.target.x).attr('y2',d=>d.target.y);
+          link.attr('x1',d=>d.source.x).attr('y1',d=>d.source.y)
+              .attr('x2',d=>d.target.x).attr('y2',d=>d.target.y);
           
           nodeLab.attr('x',d=>d.x).attr('y',d=>d.y-10);
           // linkLab.attr('x',d=>(d.source.x+d.target.x)/2).attr('y',d=>(d.source.y+d.target.y)/2);
