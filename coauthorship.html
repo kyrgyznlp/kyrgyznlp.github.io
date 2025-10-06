@@ -172,9 +172,9 @@
         
         const sim=d3.forceSimulation(nodeArr)
                     .force('link',d3.forceLink(linkArr).distance(20).id(d=>d.id))
-                    .force('charge',d3.forceManyBody().strength(-0.5))
+                    .force('charge',d3.forceManyBody().strength(-1.5))
                     .force('center',d3.forceCenter(width/2,height/2))
-                    .force('collision',d3.forceCollide().radius(28).strength(0.1))
+                    .force('collision',d3.forceCollide().radius(21).strength(0.1))
                     .alphaDecay(.01)
                     .on('tick',ticked);
         
