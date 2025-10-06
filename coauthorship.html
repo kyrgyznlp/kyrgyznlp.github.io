@@ -183,7 +183,7 @@
                     .force('charge',d3.forceManyBody().strength(-1))
                     .force('center',d3.forceCenter(width/2,height/2))
                     .force('bounding',bounding(width/1.3,height/1.3))
-                    .force('collision',d3.forceCollide().radius(25).strength(1))
+                    .force('collision',d3.forceCollide().radius(20).strength(1))
                     .alphaDecay(.01)
                     .on('tick',ticked);
         
