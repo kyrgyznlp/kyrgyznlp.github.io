@@ -889,5 +889,12 @@
     "author": "yumashev and tillabaeva and kasieva and omurkanov and musaeva and emilkyzy and chagataeva and washington",
     "year": "2025",
     "booktitle": "Accepted to EMNLP 2025 (WMT25)"
+  },
+  "abduali2025tran": {
+    "title": "Study of Kyrgyz-Kazakh Neural Machine Translation",
+    "rawauthor": "Abduali, Balzhan and Tukeyev, Ualsher and Zhumanov, Zhandos and Israilova, Nella",
+    "author": "abduali and tukeyev and zhumanov and israilova",
+    "year": 2025,
+    "booktitle": "Recent Challenges in Intelligent Information and Database Systems. ACIIDS 2025. Communications in Computer and Information Science, vol 2493. Springer, Singapore."
   }
 }
