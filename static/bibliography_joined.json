@@ -894,7 +894,13 @@
     "title": "Study of Kyrgyz-Kazakh Neural Machine Translation",
     "rawauthor": "Abduali, Balzhan and Tukeyev, Ualsher and Zhumanov, Zhandos and Israilova, Nella",
     "author": "abduali and tukeyev and zhumanov and israilova",
-    "year": 2025,
+    "year": "2025",
     "booktitle": "Recent Challenges in Intelligent Information and Database Systems. ACIIDS 2025. Communications in Computer and Information Science, vol 2493. Springer, Singapore."
+  },
+  "chubakov2026kyrtext": {
+    "title": "KyrText: A Multi-Domain Large-Scale Corpus for Kyrgyz Language",
+    "author": "chubakov",
+    "year": "2026",
+    "booktitle": "Proceedings of the Second Workshop on Language Models for Low-Resource Languages (LoResLM 2026)"
   }
 }
