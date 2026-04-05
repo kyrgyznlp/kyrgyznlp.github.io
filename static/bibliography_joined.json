@@ -902,5 +902,11 @@
     "author": "chubakov",
     "year": "2026",
     "booktitle": "Proceedings of the Second Workshop on Language Models for Low-Resource Languages (LoResLM 2026)"
+  },
+  "metinov2025kyrgyzbert":{
+    "title": "KyrgyzBERT: A Compact, Efficient Language Model for Kyrgyz NLP",
+    "author": "metinov and kudakeeva and kabaeva",
+    "year": "2025",
+    "booktitle": "arxiv"
   }
 }
