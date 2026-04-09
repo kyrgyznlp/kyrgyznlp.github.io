@@ -632,13 +632,13 @@
         "ru": "Мамтимин, И."
     },
     "sadambekov": {
-        "en" : "Sadambekov, A.",
+        "en": "Sadambekov, A.",
         "ru": "Садамбеков, А."
     },
     "tashpulatova": {
         "en": "Tashpulatova, A.",
         "ru": "Ташпулатова А."
-    }, 
+    },
     "omurkanov": {
         "en": "Omurkanov, T.",
         "ru": "Омурканов, Т."
@@ -647,25 +647,25 @@
         "en": "Choi, Y.-S.",
         "ru": "Чои, Й.-С."
     },
-    "abdieva":{
+    "abdieva": {
         "en": "Abdieva, S.",
         "ru": "Абдиева, С."
     },
-    "kuriyozov":{
+    "kuriyozov": {
         "en": "Kuriyozov, E.",
         "ru": "Курийозов, Э."
-    },    
-    "doval":{
+    },
+    "doval": {
         "en": "Doval, Y.",
         "ru": "Доваль, Й."
     },
-    "gomezrodriguez":{
+    "gomezrodriguez": {
         "en": "Gomez-Rodriguez, C.",
         "ru": "Гомез-Родригез, К."
     },
-    "khusainov" : {
+    "khusainov": {
         "en": "Khusainov, A.",
-        "ru" : "Хусаинов, Ф."
+        "ru": "Хусаинов, Ф."
     },
     "gilmullin": {
         "en": "Gilmullin, R.",
@@ -680,22 +680,22 @@
         "ru": "Кубединова, Л."
     },
     "tekerek": {
-        "en" : "Tekerek, M.",
+        "en": "Tekerek, M.",
         "ru": "Текерек, М."
     },
-    "tayirova":{
-        "en":"Tayirova, N.",
+    "tayirova": {
+        "en": "Tayirova, N.",
         "ru": "Таирова, Н."
     },
-    "brimkulov":{
+    "brimkulov": {
         "en": "Brimkulov, U.",
         "ru": "Бримкулов, У."
     },
-    "zhenishbekov":{
+    "zhenishbekov": {
         "en": "Zhenishbekov, I.",
         "ru": "Женишбеков, И."
     },
-    "suranbaev":{
+    "suranbaev": {
         "en": "Suranbaev, Zh.",
         "ru": "Суранбаев, Ж."
     },
@@ -730,5 +730,21 @@
     "chagataeva": {
         "en": "Chagataeva, G.",
         "ru": "Чагатаева, Г."
+    },
+    "abduali": {
+        "en": "Abduali, B.",
+        "ru": "Абдуали, Б."
+    },
+    "chubakov": {
+        "en": "Chubakov, T.",
+        "ru": "Чубаков, Т."
+    },
+    "kudakeeva": {
+        "en": "Kudakeeva, G. M.",
+        "ru": "Кудакеева, Г. М."
+    },
+    "metinov": {
+        "en": "Metinov, A.",
+        "ru": "Метинов, А."
     }
 }
