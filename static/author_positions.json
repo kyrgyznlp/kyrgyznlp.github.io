@@ -305,11 +305,6 @@
         "y": 645.9827
     },
     {
-        "author_id": "tumonbaev",
-        "x": 817.68396,
-        "y": -256.24658
-    },
-    {
         "author_id": "karabaeva",
         "x": 386.92746,
         "y": 31.221806
@@ -518,7 +513,7 @@
         "author_id": "du",
         "x": 897.6232,
         "y": 530.3309
-    },    
+    },
     {
         "author_id": "mamtimin",
         "x": 897.6232,
@@ -578,11 +573,6 @@
         "author_id": "esenalieva",
         "x": 326.8762,
         "y": -150.79161
-    },
-    {
-        "author_id": "cetin",
-        "x": 128.72054,
-        "y": 67.88335
     },
     {
         "author_id": "wang",
@@ -705,11 +695,6 @@
         "y": 398.57208
     },
     {
-        "author_id": "sharshembiev",
-        "x": 770.5121,
-        "y": -289.49753
-    },
-    {
         "author_id": "zafer",
         "x": 685.6329,
         "y": 151.57408
@@ -808,140 +793,5 @@
         "author_id": "licato",
         "x": -938.46106,
         "y": 544.8688
-    },
-    {
-        "author_id": "du",
-        "x": -905.98486,
-        "y": -412.2226
-    },
-    {
-        "author_id": "mamtimin",
-        "x": -905.98486,
-        "y": -412.2226
-    },
-    {
-        "author_id": "tashpulatova",
-        "x": -905.98486,
-        "y": -412.2226
-    },
-    {
-        "author_id": "gilmullin",
-        "x": -905.98486,
-        "y": -412.2226
-    },
-    {
-        "author_id": "khusainov",
-        "x": -905.98486,
-        "y": -412.2226
-    },
-    {
-        "author_id": "gomezrodriguez",
-        "x": -905.98486,
-        "y": -412.2226
-    },
-    {
-        "author_id": "doval",
-        "x": -905.98486,
-        "y": -412.2226
-    },
-    {
-        "author_id": "kuriyozov",
-        "x": -905.98486,
-        "y": -412.2226
-    },
-    {
-        "author_id": "abdieva",
-        "x": -905.98486,
-        "y": -412.2226
-    },
-    {
-        "author_id": "choi",
-        "x": -905.98486,
-        "y": -412.2226
-    },
-    {
-        "author_id": "omurkanov",
-        "x": -905.98486,
-        "y": -412.2226
-    },
-    {
-        "author_id": "minsafina",
-        "x": -905.98486,
-        "y": -412.2226
-    },
-    {
-        "author_id": "kubedinova",
-        "x": -905.98486,
-        "y": -412.2226
-    },
-    {
-        "author_id": "sadambekov",
-        "x": -905.98486,
-        "y": -412.2226
-    },
-    {
-        "author_id": "izmailov",
-        "x": -905.98486,
-        "y": -412.2226
-    },
-    {
-        "author_id": "suranbaev",
-        "x": -905.98486,
-        "y": -412.2226
-    },
-    {
-        "author_id": "zhenishbekov",
-        "x": -905.98486,
-        "y": -412.2226
-    },
-    {
-        "author_id": "brimkulov",
-        "x": -905.98486,
-        "y": -412.2226
-    },
-    {
-        "author_id": "tayirova",
-        "x": -905.98486,
-        "y": -412.2226
-    },
-    {
-        "author_id": "tekerek",
-        "x": -905.98486,
-        "y": -412.2226
-    },
-    {
-        "author_id": "tillabaeva",
-        "x": -905.98486,
-        "y": -412.2226
-    },
-    {
-        "author_id": "hartmann",
-        "x": -905.98486,
-        "y": -412.2226
-    },
-    {
-        "author_id": "chagataeva",
-        "x": -905.98486,
-        "y": -412.2226
-    },
-    {
-        "author_id": "musaeva",
-        "x": -905.98486,
-        "y": -412.2226
-    },
-    {
-        "author_id": "emilkyzy",
-        "x": -905.98486,
-        "y": -412.2226
-    },
-    {
-        "author_id": "ismailova",
-        "x": -905.98486,
-        "y": -412.2226
-    },
-    {
-        "author_id": "erkinova",
-        "x": -905.98486,
-        "y": -412.2226
     }
 ]
