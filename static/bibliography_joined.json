@@ -924,5 +924,17 @@
     "eprint": "2511.20182",
     "archivePrefix": "arXiv",
     "primaryClass": "cs.CL"
+  },
+
+  "uvalieva2026kyrgyz": {
+    "title": "Kyrgyz Text Normalization: A Comparative Study of Neural and Rule-Based Approaches",
+    "rawauthor": "Uvalieva, Zarina and Uulu, Bektemir Kumarbai and Metinov, Adilet and Tashbaltaev, Tynchtykbek and Alibekov, Nurtilek",
+    "author": "uvalieva and kumarbaiuulu and metinov and tashbaltaev and alibekov",
+    "year": "2026",
+    "booktitle": "Proceedings of the 1st Workshop on Multilinguality in the Era of Large Language Models (MeLLM 2026)",
+    "publisher": "Association for Computational Linguistics",
+    "pages": "52--62",
+    "url": "https://aclanthology.org/2026.mellm-1.5/",
+    "labels": "APP, COR"
   }
 }
