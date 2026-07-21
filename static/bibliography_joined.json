@@ -936,5 +936,17 @@
     "pages": "52--62",
     "url": "https://aclanthology.org/2026.mellm-1.5/",
     "labels": "APP, COR"
+  },
+
+  "turatali2026kyrgyzllmbench": {
+    "title": "KyrgyzLLM-Bench: Benchmarking Kyrgyz Language Understanding",
+    "rawauthor": "Turatali, Timur and Turdubaeva, Aida and Izmailov, Rustem and Alekseev, Anton M. and Nikolenko, Sergey I.",
+    "author": "turatali and turdubaeva and izmailov and alekseev and nikolenko",
+    "year": "2026",
+    "labels": "APP",
+    "url": "https://arxiv.org/abs/2607.17173",
+    "eprint": "2607.17173",
+    "archivePrefix": "arXiv",
+    "primaryClass": "cs.CL"
   }
 }
