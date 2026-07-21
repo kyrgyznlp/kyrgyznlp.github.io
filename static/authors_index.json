@@ -746,5 +746,21 @@
     "metinov": {
         "en": "Metinov, A.",
         "ru": "Метинов, А."
-    }
+    },
+  "uvalieva": {
+    "en": "Uvalieva, Z.",
+    "ru": "Увалиева, З."
+  },
+  "kumarbaiuulu": {
+    "en": "Kumarbai Uulu, B.",
+    "ru": "Кумарбай уулу, Б."
+  },
+  "tashbaltaev": {
+    "en": "Tashbaltaev, T.",
+    "ru": "Ташбалтаев, Т."
+  },
+  "alibekov": {
+    "en": "Alibekov, N.",
+    "ru": "Алибеков, Н."
+  }
 }
