@@ -948,5 +948,16 @@
     "eprint": "2607.17173",
     "archivePrefix": "arXiv",
     "primaryClass": "cs.CL"
-  }
+  },
+"novokshanov2026loresmt": {
+  "title": "Data-Centric Approach at the LoResMT 2026 Turkic Translation Challenge: Russian-Kyrgyz",
+  "rawauthor": "Novokshanov, Dmitry",
+  "author": "novokshanov",
+  "year": "2026",
+  "booktitle": "Proceedings of the Ninth Workshop on Technologies for Machine Translation of Low Resource Languages (LoResMT 2026)",
+  "publisher": "Association for Computational Linguistics",
+  "pages": "225--230",
+  "url": "https://aclanthology.org/2026.loresmt-1.22/",
+  "labels": "APP"
+}
 }
