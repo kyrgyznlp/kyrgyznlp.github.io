@@ -504,8 +504,8 @@
 
             const filteredData = researchData.filter(work => {
                 const authorMatch = work.authors.some(authorKey => {
-                    const authorNameEn = authorsIndex[authorKey]?.en.toLowerCase();
-                    const authorNameRu = authorsIndex[authorKey]?.ru.toLowerCase();
+                    const authorNameEn = authorsIndex[authorKey]?.en?.toLowerCase();
+                    const authorNameRu = authorsIndex[authorKey]?.ru?.toLowerCase();
                     return (authorNameEn?.startsWith(authorFilter) || authorNameRu?.startsWith(authorFilter));
                 });
                 const titleMatch = work.title.toLowerCase().includes(titleFilter) ||
