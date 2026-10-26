@@ -959,5 +959,16 @@
   "pages": "225--230",
   "url": "https://aclanthology.org/2026.loresmt-1.22/",
   "labels": "APP"
+},
+  "kuzmenko2026gigaam": {
+  "title": "GigaAM Multilingual: Foundation Model for Underrepresented Languages",
+  "rawauthor": "Kuzmenko, Andrei and Maximenko, Alexandr and Kutsakov, Aleksandr and Gospodinov, Georgii and Bolotov, Dmitrii and Kutuzov, Oleg and Bogomolov, Pavel and Minkin, Fyodor",
+  "author": "kuzmenko and maximenko and kutsakov and gospodinov and bolotov and kutuzov and bogomolov and minkin",
+  "year": "2026",
+  "url": "https://arxiv.org/abs/2607.10371",
+  "eprint": "2607.10371",
+  "archivePrefix": "arXiv",
+  "primaryClass": "cs.CL",
+  "labels": "APP"
 }
 }
