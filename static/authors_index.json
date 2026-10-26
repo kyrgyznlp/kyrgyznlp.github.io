@@ -766,5 +766,13 @@
 "novokshanov": {
     "en": "Novokshanov, D.",
     "ru": "Новокшанов, Д."
-}
+},
+    "kuzmenko": {"en": "Kuzmenko, A.", "ru": "Кузьменко, А."},
+"maximenko": {"en": "Maximenko, A.", "ru": "Максименко, А."},
+"kutsakov": {"en": "Kutsakov, A.", "ru": "Куцаков, А."},
+"gospodinov": {"en": "Gospodinov, G.", "ru": "Господинов, Г."},
+"bolotov": {"en": "Bolotov, D.", "ru": "Болотов, Д."},
+"kutuzov": {"en": "Kutuzov, O.", "ru": "Кутузов, О."},
+"bogomolov": {"en": "Bogomolov, P.", "ru": "Богомолов, П."},
+"minkin": {"en": "Minkin, F.", "ru": "Минкин, Ф."}
 }
